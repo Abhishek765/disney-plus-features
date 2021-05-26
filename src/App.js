@@ -8,6 +8,7 @@ import {
   Link
 } from "react-router-dom";
 import Detail from './components/Detail/Detail';
+import Login from './components/Login/Login';
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
 
           <Route path="/detail">
             <Detail />
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
         </Switch>
       </Router>
