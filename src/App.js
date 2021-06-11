@@ -4,8 +4,7 @@ import Home from './components/Home/Home';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import Detail from './components/Detail/Detail';
 import Login from './components/Login/Login';
@@ -21,7 +20,7 @@ function App() {
             <Home />
           </Route>
 
-          <Route path="/detail">
+          <Route path="/detail/:id">
             <Detail />
           </Route>
           <Route path="/login">

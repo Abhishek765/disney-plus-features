@@ -1,41 +1,83 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
+import { css } from '@emotion/react';
+import db from '../../firebase';
+import { BounceLoader, BarLoader, BeatLoader } from 'react-spinners';
+
+const loaderCss = css`
+  display: block;
+  margin: 0 auto;
+  margin-top: 40vh;
+  border-color: red;
+`;
+
 const Detail = () => {
+    const { id } = useParams();
+    const [movie, setMovie] = useState();
+    const [isloading, setLoading] = useState(true);
+
+    const getMovieData = async () => {
+        await db.collection("movies")
+            .doc(id)
+            .get()
+            .then(doc => {
+                if (doc.exists) {
+                    // save the movie data in a state
+                    setMovie(doc.data());
+                    setLoading(false);
+                }
+                else {
+                    // redirect to home page
+                }
+            })
+
+    }
+    //! getting the data from Firebase DB
+    useEffect(() => {
+        getMovieData();
+    }, []);
+    console.log(movie);
     return (
-        <Container>
-            <Background>
-                <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/4F39B7E16726ECF419DD7C49E011DD95099AA20A962B0B10AA1881A70661CE45/scale?width=1440&aspectRatio=1.78&format=jpeg" alt="back" />
-            </Background>
-            <ImageTitle>
-                <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/D7AEE1F05D10FC37C873176AAA26F777FC1B71E7A6563F36C6B1B497CAB1CEC2/scale?width=1440&aspectRatio=1.78" alt="titleImg" />
-            </ImageTitle>
+        <>
+            {
+                isloading ? <BounceLoader color={"#fff"} css={loaderCss} /> :
+                    <Container>
+                        <Background>
+                            <img src={movie.backgroundImg} alt="back" />
+                        </Background>
+                        <ImageTitle>
+                            <img src={movie.titleImg} alt="titleImg" />
+                        </ImageTitle>
 
-            <Controls>
-                <PlayButton>
-                    <img src="/images/play-icon-black.png" alt="imgIcon" />
-                    <span>PLAY</span>
-                </PlayButton>
+                        <Controls>
+                            <PlayButton>
+                                <img src="/images/play-icon-black.png" alt="imgIcon" />
+                                <span>PLAY</span>
+                            </PlayButton>
 
-                <TrailerButton>
-                    <img src="/images/play-icon-white.png" alt="imgIcon" />
-                    <span>TRAILER</span>
-                </TrailerButton>
-                <AddButton>
-                    <span>+</span>
-                </AddButton>
-                <GroupWatchButton>
-                    <img src="/images/group-icon.png" alt="groupIcon" />
-                </GroupWatchButton>
-            </Controls>
+                            <TrailerButton>
+                                <img src="/images/play-icon-white.png" alt="imgIcon" />
+                                <span>TRAILER</span>
+                            </TrailerButton>
+                            <AddButton>
+                                <span>+</span>
+                            </AddButton>
+                            <GroupWatchButton>
+                                <img src="/images/group-icon.png" alt="groupIcon" />
+                            </GroupWatchButton>
+                        </Controls>
 
-            <SubTitle>
-                Title is Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam, molestias.
-            </SubTitle>
+                        <SubTitle>
+                            Title is Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam, molestias.
+                        </SubTitle>
 
-            <Description>
-                Decritopn Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto odit alias distinctio corrupti commodi incidunt, atque ipsum dicta laboriosam voluptas exercitationem, quisquam beatae quaerat dolores adipisci provident sed pariatur voluptate.
-            </Description>
-        </Container>
+                        <Description>
+                            Decritopn Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto odit alias distinctio corrupti commodi incidunt, atque ipsum dicta laboriosam voluptas exercitationem, quisquam beatae quaerat dolores adipisci provident sed pariatur voluptate.
+                        </Description>
+                    </Container>
+            }
+        </>
     )
 }
 
