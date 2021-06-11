@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-
+import { Link } from 'react-router-dom';
 const Header = () => {
     return (
         <Nav>
@@ -9,30 +9,30 @@ const Header = () => {
 
             {/* Nav Menu */}
             <NavMenu>
-                <a>
+                <Link to="/">
                     <img src="/images/home-icon.svg" alt="homeIcon" />
                     <span>HOME</span>
-                </a>
-                <a>
+                </Link>
+                <Link to="/">
                     <img src="/images/search-icon.svg" alt="SearchIcon" />
                     <span>SEARCH</span>
-                </a>
-                <a>
+                </Link>
+                <Link to="/">
                     <img src="/images/watchlist-icon.svg" alt="WatchListIcon" />
                     <span>WATCHLIST</span>
-                </a>
-                <a>
+                </Link>
+                <Link to="/">
                     <img src="/images/original-icon.svg" alt="OriginalIcon" />
                     <span>ORIGINALS</span>
-                </a>
-                <a>
+                </Link>
+                <Link to="/">
                     <img src="/images/movie-icon.svg" alt="MoviesIcon" />
                     <span>MOVIES</span>
-                </a>
-                <a>
+                </Link>
+                <Link to="/">
                     <img src="/images/series-icon.svg" alt="SeriesIcon" />
                     <span>SERIES</span>
-                </a>
+                </Link>
 
             </NavMenu>
 
@@ -71,6 +71,8 @@ const NavMenu = styled.div`
         align-items: center;
         padding: 0 0.75rem;
         cursor:pointer;
+        color:#fff;
+        text-decoration: none;
        
         img{
             height:1.25rem;
