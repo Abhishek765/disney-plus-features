@@ -8,17 +8,16 @@ import { useDispatch } from 'react-redux';
 import { setMovies } from '../../features/movie/movieSlice';
 const Home = () => {
     const dispatch = useDispatch();
-
     useEffect(() => {
         db.collection("movies").onSnapshot(snapshot => {
             let tempMovies = snapshot.docs.map(doc => {
                 return { id: doc.id, ...doc.data() };
-            });
+            })
 
             dispatch(setMovies(tempMovies));
         })
 
-    }, [])
+    }, [dispatch])
 
     return (
         <Container>

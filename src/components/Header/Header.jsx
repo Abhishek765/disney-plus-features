@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
 
-
 const Header = () => {
     return (
         <Nav>
@@ -72,7 +71,7 @@ const NavMenu = styled.div`
         align-items: center;
         padding: 0 0.75rem;
         cursor:pointer;
-        
+       
         img{
             height:1.25rem;
         }

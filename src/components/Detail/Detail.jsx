@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import { css } from '@emotion/react';
 import db from '../../firebase';
-import { BounceLoader, BarLoader, BeatLoader } from 'react-spinners';
+import { BounceLoader } from 'react-spinners';
 
 const loaderCss = css`
   display: block;
@@ -17,27 +17,23 @@ const Detail = () => {
     const [movie, setMovie] = useState();
     const [isloading, setLoading] = useState(true);
 
-    const getMovieData = async () => {
-        await db.collection("movies")
-            .doc(id)
-            .get()
-            .then(doc => {
-                if (doc.exists) {
-                    // save the movie data in a state
-                    setMovie(doc.data());
-                    setLoading(false);
-                }
-                else {
-                    // redirect to home page
-                }
-            })
-
-    }
     //! getting the data from Firebase DB
     useEffect(() => {
-        getMovieData();
-    }, []);
-    console.log(movie);
+        db.collection("movies")
+        .doc(id)
+        .get()
+        .then(doc => {
+            if (doc.exists) {
+                // save the movie data in a state
+                setMovie(doc.data());
+                setLoading(false);
+            }
+            else {
+                // redirect to home page
+            }
+        })
+    }, [id]); // handling Dependancy list 
+
     return (
         <>
             {
