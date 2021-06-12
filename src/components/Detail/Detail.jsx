@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { css } from '@emotion/react';
 import db from '../../firebase';
+import { auth } from '../../firebase.js'
 import { BounceLoader } from 'react-spinners';
+import { setUserLogin } from '../../features/user/userSlice';
+import { useDispatch } from 'react-redux';
 
 const loaderCss = css`
   display: block;
@@ -14,26 +17,41 @@ const loaderCss = css`
 
 const Detail = () => {
     const { id } = useParams();
+    const dispatch = useDispatch();
+    const history = useHistory();
     const [movie, setMovie] = useState();
     const [isloading, setLoading] = useState(true);
 
+
+    useEffect(() => {
+        auth.onAuthStateChanged(async (user) => {
+            if (user) {
+                dispatch(setUserLogin({
+                    name: user.displayName,
+                    email: user.email,
+                    photo: user.photoURL
+                }))
+                history.push(`/detail/${id}`);
+            }
+        })
+
+    }, [id, dispatch, history])
     //! getting the data from Firebase DB
     useEffect(() => {
         db.collection("movies")
-        .doc(id)
-        .get()
-        .then(doc => {
-            if (doc.exists) {
-                // save the movie data in a state
-                setMovie(doc.data());
-                setLoading(false);
-            }
-            else {
-                // redirect to home page
-            }
-        })
+            .doc(id)
+            .get()
+            .then(doc => {
+                if (doc.exists) {
+                    // save the movie data in a state
+                    setMovie(doc.data());
+                    setLoading(false);
+                }
+                else {
+                    // redirect to home page
+                }
+            })
     }, [id]); // handling Dependancy list 
-
     return (
         <>
             {
@@ -51,11 +69,12 @@ const Detail = () => {
                                 <img src="/images/play-icon-black.png" alt="imgIcon" />
                                 <span>PLAY</span>
                             </PlayButton>
-
-                            <TrailerButton>
-                                <img src="/images/play-icon-white.png" alt="imgIcon" />
-                                <span>TRAILER</span>
-                            </TrailerButton>
+                            <a href={movie.videoURL}>
+                                <TrailerButton>
+                                    <img src="/images/play-icon-white.png" alt="imgIcon" />
+                                    <span>TRAILER</span>
+                                </TrailerButton>
+                            </a>
                             <AddButton>
                                 <span>+</span>
                             </AddButton>
@@ -65,11 +84,11 @@ const Detail = () => {
                         </Controls>
 
                         <SubTitle>
-                            Title is Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam, molestias.
+                            {movie.subTitle}
                         </SubTitle>
 
                         <Description>
-                            Decritopn Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto odit alias distinctio corrupti commodi incidunt, atque ipsum dicta laboriosam voluptas exercitationem, quisquam beatae quaerat dolores adipisci provident sed pariatur voluptate.
+                            {movie.description}
                         </Description>
                     </Container>
             }
@@ -80,6 +99,7 @@ const Detail = () => {
 export default Detail;
 
 const Container = styled.div`
+    margin-top:4.5rem;
     min-height: calc(100vh - 70px);
     padding: 0 calc(3.5vw - 5px);
     position: absolute;
@@ -118,6 +138,10 @@ const ImageTitle = styled.div`
 const Controls = styled.div`
     display: flex;
     align-items: center;
+
+    a{
+        text-decoration:none;
+    }
 
 `
 const PlayButton = styled.button`

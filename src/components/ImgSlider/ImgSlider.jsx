@@ -18,13 +18,16 @@ const ImgSlider = () => {
     return (
         <Carousel {...settings}>
             <Wrap>
-                <img src="/images/slider-badging.jpg" alt="badging" />
-            </Wrap>
-            <Wrap>
                 <img src="/images/slider-badag.jpg" alt="badging" />
             </Wrap>
             <Wrap>
                 <img src="/images/slider-badging.jpg" alt="badging" />
+            </Wrap>
+            <Wrap>
+                <img src="/images/slider-scale.jpg" alt="badging" />
+            </Wrap>
+            <Wrap>
+                <img src="/images/slider-scales.jpg" alt="badging" />
             </Wrap>
 
         </Carousel>
@@ -34,7 +37,7 @@ const ImgSlider = () => {
 export default ImgSlider;
 
 const Carousel = styled(Slider)`
-    margin-top:1.25rem;
+    margin-top:6rem;
 
     ul li button {
         &:before {

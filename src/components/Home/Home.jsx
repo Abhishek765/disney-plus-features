@@ -12,20 +12,20 @@ const Home = () => {
         db.collection("movies").onSnapshot(snapshot => {
             let tempMovies = snapshot.docs.map(doc => {
                 return { id: doc.id, ...doc.data() };
-            })
-
-            dispatch(setMovies(tempMovies));
         })
 
-    }, [dispatch])
+        dispatch(setMovies(tempMovies));
+    })
 
-    return (
-        <Container>
-            <ImgSlider />
-            <Viewers />
-            <Movies />
-        </Container>
-    )
+}, [dispatch])
+
+return (
+    <Container>
+        <ImgSlider />
+        <Viewers />
+        <Movies />
+    </Container>
+)
 }
 
 export default Home;

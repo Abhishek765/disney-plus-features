@@ -1,28 +1,41 @@
 import React from 'react'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { css } from '@emotion/react';
 import { useSelector } from 'react-redux';
 import { selectMovies } from '../../features/movie/movieSlice';
+import { BounceLoader } from 'react-spinners';
 
+
+
+const loaderCss = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 const Movies = () => {
     const movies = useSelector(selectMovies);
     return (
         <Container>
             <h4>Recommended for you</h4>
-            <Content>
-                {
-                    movies &&
-                    movies.map((movie) => (
+            {
+                movies ? (
+                    <Content>
+                        {
+                            movies &&
+                            movies.map((movie) => (
 
-                        <Wrap key={movie.id}>
-                            <Link to={`/detail/${movie.id}`}>
-                                <img src={movie.cardImg} alt={movie.title} />
-                            </Link>
-                        </Wrap>
+                                <Wrap key={movie.id}>
+                                    <Link to={`/detail/${movie.id}`}>
+                                        <img src={movie.cardImg} alt={movie.title} />
+                                    </Link>
+                                </Wrap>
 
-                    ))
-                }
-            </Content>
+                            ))
+                        }
+                    </Content>
+                ) : <BounceLoader color={"#fff"} css={loaderCss} />
+            }
         </Container>
     )
 }
