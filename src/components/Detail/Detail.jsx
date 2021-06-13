@@ -63,33 +63,34 @@ const Detail = () => {
                         <ImageTitle>
                             <img src={movie.titleImg} alt="titleImg" />
                         </ImageTitle>
+                        <ContentMeta>
+                            <Controls>
+                                <PlayButton>
+                                    <img src="/images/play-icon-black.png" alt="imgIcon" />
+                                    <span>PLAY</span>
+                                </PlayButton>
+                                <a href={movie.videoURL}>
+                                    <TrailerButton>
+                                        <img src="/images/play-icon-white.png" alt="imgIcon" />
+                                        <span>TRAILER</span>
+                                    </TrailerButton>
+                                </a>
+                                <AddButton>
+                                    <span>+</span>
+                                </AddButton>
+                                <GroupWatchButton>
+                                    <img src="/images/group-icon.png" alt="groupIcon" />
+                                </GroupWatchButton>
+                            </Controls>
 
-                        <Controls>
-                            <PlayButton>
-                                <img src="/images/play-icon-black.png" alt="imgIcon" />
-                                <span>PLAY</span>
-                            </PlayButton>
-                            <a href={movie.videoURL}>
-                                <TrailerButton>
-                                    <img src="/images/play-icon-white.png" alt="imgIcon" />
-                                    <span>TRAILER</span>
-                                </TrailerButton>
-                            </a>
-                            <AddButton>
-                                <span>+</span>
-                            </AddButton>
-                            <GroupWatchButton>
-                                <img src="/images/group-icon.png" alt="groupIcon" />
-                            </GroupWatchButton>
-                        </Controls>
+                            <SubTitle>
+                                {movie.subTitle}
+                            </SubTitle>
 
-                        <SubTitle>
-                            {movie.subTitle}
-                        </SubTitle>
-
-                        <Description>
-                            {movie.description}
-                        </Description>
+                            <Description>
+                                {movie.description}
+                            </Description>
+                        </ContentMeta>
                     </Container>
             }
         </>
@@ -99,17 +100,19 @@ const Detail = () => {
 export default Detail;
 
 const Container = styled.div`
-    margin-top:4.5rem;
-    min-height: calc(100vh - 70px);
-    padding: 0 calc(3.5vw - 5px);
-    position: absolute;
-`
+    position: relative;
+    min-height: calc(100vh - 250px);
+    overflow-x: hidden;
+    display: block;
+    padding: 0px calc(3.5vw + 5px);
+
+        `;
 const Background = styled.div`
     position:fixed;
     top: 0;
-    left: 0; 
+    left: 0;
     right: 0;
-    bottom: 0; 
+    bottom: 0;
     z-index: -1;
     opacity: 0.8;
 
@@ -119,31 +122,35 @@ const Background = styled.div`
 
     }
 
-`
+            `
 const ImageTitle = styled.div`
-    height:30vh;
-    min-height:10.625rem;
-    width: 35vw;
-    min-width:12.5rem;
-    margin-top:5rem;
+        height:30vh;
+        min-height:10.625rem;
+        width: 35vw;
+        min-width:12.5rem;
+        margin-top:5rem;
 
-    img{
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
 
-`
+`;
+const ContentMeta = styled.div`
+  max-width: 874px;
+`;
 
 const Controls = styled.div`
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 
     a{
         text-decoration:none;
     }
 
-`
+`;
 const PlayButton = styled.button`
     border-radius: 4px;
     font-size:15px;
@@ -160,14 +167,24 @@ const PlayButton = styled.button`
     &:hover {
         background:rgb(198, 198, 198);
     }
+    @media (max-width: 768px) {
+        height: 45px;
+        padding: 0px 12px;
+        font-size: 12px;
+        margin: 0px 10px 0px 0px;
+        img {
+        width: 25px;
+        }
+     }
+`;
 
-`
 const TrailerButton = styled(PlayButton)`
     background: rgba( 0, 0, 0, 0.3 );
     border: 1px solid rgb(249, 249, 249);
     color: rgb(249, 249, 249);
     text-transform: uppercase;
-`
+`;
+
 const AddButton = styled.button`
     width: 2.75rem;
     height: 2.75rem;
@@ -175,29 +192,42 @@ const AddButton = styled.button`
     align-items: center;
     justify-content: center;
     border-radius:50%;
-    border:2px solid #fff; 
+    border:2px solid #fff;
     background-color: rgba( 0, 0 ,0, 0.6);
     cursor:pointer;
     margin-right:16px;
     span{
-        font-size: 1.875rem;
-        color: #fff;
+        font - size: 1.875rem;
+    color: #fff;
     }
+    @media (max-width: 315px) {
+         margin-top:10px;
+     }
 
-`
+`;
+
 const GroupWatchButton = styled(AddButton)`
     background: #000;
-`
+    @media (max-width: 370px) {
+         margin-top:10px;
+     }
+    
+`;
+
 const SubTitle = styled.div`
     color: rgb(249, 249, 249);
     font-size: 15px;
     min-height:20px;
     margin-top:26px;
-`
+`;
+
 const Description = styled.div`
-    max-width: 55rem;
-    line-height:1.4;
-    font-size: 20px;
-    margin-top: 16px;
-    color: rgba(249,249,249);
+ width: fit;
+ line-height: 1.4;
+  font-size: 20px;
+  padding: 16px 0px;
+  color: rgb(249, 249, 249);
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `
