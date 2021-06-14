@@ -1,44 +1,104 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
-## Available Scripts
 
-In the project directory, you can run:
+<!-- ABOUT THE PROJECT -->
+## About The Project
+![image](https://user-images.githubusercontent.com/43133456/121914048-8c9ad580-cd4f-11eb-9567-f916623fd0b0.png)
 
-### `yarn start`
+A Scallable Disney Movie featured application deployed on Firebase.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Built With
 
-### `yarn test`
+* [ReactJS](https://reactjs.org/)
+* [Redux-ToolKit](https://redux-toolkit.js.org/)
+* [React-router-dom](https://reactrouter.com/web/guides/quick-start)
+* [React Slick](https://react-slick.neostack.com/)
+* [React-spinners](https://www.npmjs.com/package/react-spinners)
+* [styled-components](https://styled-components.com/)
+* [FireBase-Authentication](https://firebase.google.com/docs/auth/web/google-signin)
+* [FireBase Cloud Firestrore](https://firebase.google.com/docs/firestore)
+* [CI/CD Pipeline](https://dev.to/semaphore/ci-cd-continuous-integration-delivery-explained-75l)-> For workFlow management
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<!-- GETTING STARTED -->
+## Getting Started
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Follow the steps to run the project Locally.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Prerequisites
 
-### `yarn eject`
+Please make sure you have node installed in your sytem.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Run Locally
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Clone the project
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+  git clone https://github.com/Abhishek765/disney-plus-features.git
+```
 
-## Learn More
+Go to the project directory
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+  cd disney-plus-features
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run start
+```
+   or
+```bash
+  npm start
+```
+   or start using **yarn**
+```bash
+  yarn start
+```
+
+  
+
+
+<!-- USAGE EXAMPLES -->
+## Usage
+
+**Live Project:** [Disney_Plus](https://disney-plus-feature.web.app/)<br>
+**Video Demo:** [Video](https://youtu.be/ew51dvWpuiI)
+
+
+<!-- CONTACT -->
+## Contact
+
+Connect with Me - [![LinkedIn][linkedin-shield]][linkedin-url]
+
+Project Link: [https://github.com/Abhishek765/disney-plus-features](https://github.com/Abhishek765/disney-plus-features)
+
+
+
+
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
+[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
+[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
+[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
+[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
+[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
+[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
+[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
+[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/in/abhishek-vishwakarma17/
