@@ -4,7 +4,7 @@
 ## About The Project
 ![image](https://user-images.githubusercontent.com/43133456/121914048-8c9ad580-cd4f-11eb-9567-f916623fd0b0.png)
 
-A Scallable Disney Movie featured application deployed on Firebase.
+A Scalable Disney Movie featured application deployed on Firebase.
 
 
 ### Built With
